@@ -5,7 +5,7 @@ import Product from "../Products";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../Loader";
 import Message from "../Message";
-import { fetchProducts } from "../../slices/Productslices";
+import { fetchProducts } from "../../store/slices/Productslices";
 
 function Homescreen() {
   const dispatch = useDispatch();

@@ -1,10 +1,13 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import ApiHelper from "../../services/ApiHelper";
 
 
 export const fetchProduct=createAsyncThunk("product/fetch",async(id)=>{
-    const {data}=await axios.get(`http://127.0.0.1:8000/api/product/${id}`)
-    console.log(data)
+  const apiConfig={
+    method:'get',
+    url:`/product/${id}`
+  }
+    const data=await ApiHelper.call(apiConfig)
     return data
     
 })

@@ -1,20 +1,19 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import ApiHelper from "../../services/ApiHelper";
 
 export const fetchProducts=createAsyncThunk("products/fetch",async()=>{
-   const {data}=await axios.get('api/products')
+   const apiConfig={
+    method:'get',
+    url:'/products'
+   }
+   const data=await ApiHelper.call(apiConfig)
    return data
    
 })
-export const fetchProduct=createAsyncThunk("product/fetch",async(id)=>{
-  const {data}=await axios.get(`api/product/${id}`)
-  return data
-  
-})
+
 const productSlice=createSlice({
-    name:"products",
-    
-    initialState: {products:[],loading:false,error:null,product: null},
+    name:"products",   
+    initialState: {products:[],loading:false,error:null},
     reducers:{},
     extraReducers: (builder)=>{
         builder 
@@ -26,18 +25,6 @@ const productSlice=createSlice({
             state.products=action.payload
           })
           .addCase(fetchProducts.rejected,(state,action)=>{
-            state.loading=false,
-            state.error=action.error.message;
-          })
-
-          .addCase(fetchProduct.pending,(state)=>{
-            state.loading=true;
-          })
-          .addCase(fetchProduct.fulfilled,(state,action)=>{
-            state.loading=false,
-            state.product=action.payload
-          })
-          .addCase(fetchProduct.rejected,(state,action)=>{
             state.loading=false,
             state.error=action.error.message;
           })

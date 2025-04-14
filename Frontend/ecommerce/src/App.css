@@ -17,6 +17,9 @@
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
+.container {
+  margin-top: 80px; /* Adjust based on navbar height */
+}
 
 @keyframes logo-spin {
   from {

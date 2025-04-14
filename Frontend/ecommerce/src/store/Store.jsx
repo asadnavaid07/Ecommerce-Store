@@ -1,9 +1,14 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import productReducer from "./slices/Productslices"; 
 import singleProductReducer from "./slices/Singleproductslice"; 
+import signupReducer from "./slices/Signupslices"; 
+import loginReducer from "./slices/Loginslices";
+
 const rootReducer=combineReducers({
   productsList: productReducer,  
   productDetails: singleProductReducer, 
+  signup:signupReducer,
+  login:loginReducer
 })
 
 const store=configureStore({

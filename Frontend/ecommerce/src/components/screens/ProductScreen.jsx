@@ -1,14 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProduct } from "../../slices/Singleproductslice";
+import { fetchProduct } from "../../store/slices/Singleproductslice";
 import { Button, Card, Col, Container, ListGroup, ListGroupItem, Row,Image } from "react-bootstrap";
-import { Link, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import Loader from "../Loader";
 import Message from "../Message";
 import Rating from "../Rating";
 
 
 function ProductScreen() {
+  const navigate=useNavigate()
   const { id } = useParams();
   const dispatch = useDispatch();
   const { error, loading, product } = useSelector((state) => state.productDetails); 
@@ -58,8 +59,8 @@ function ProductScreen() {
                   </Row>
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  <Button className="btn-block btn-success" disabled={product.stockcount === 0} type="button">
-                    Add to Cart
+                  <Button className="btn-block btn-success" disabled={product.stockcount === 0} type="button" onClick={()=>navigate("/login")}>
+                    Add to Cart 
                   </Button>
                 </ListGroup.Item>
               </ListGroup>
