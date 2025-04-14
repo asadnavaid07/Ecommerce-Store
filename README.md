@@ -1,5 +1,3 @@
-# Ecommerce-Store
-
 # 🛒 Ecommerce Store - Full Stack (React + Django)
 
 A modern full-stack Ecommerce Store built with **React** (frontend) and **Django** (backend). This app allows users to browse products, manage a cart, checkout securely, and handle orders — all in one seamless platform.
